@@ -20,6 +20,7 @@ export class UserController {
    }
    const userRepository = AppDataSource.getRepository(User)
    try{
+      user.hashPassword();
       await userRepository.save(user)
    } catch(error) {
       return res.status(500).json({
